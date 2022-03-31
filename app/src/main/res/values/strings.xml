@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">TimeProject</string>
+    <string-array name="GroupNames">
+        <item>Группа 1</item>
+        <item>Семья</item>
+        <item>Друзья</item>
+    </string-array>
+    <string name="profile_button">Профиль</string>
+    <string name="float_button">Добавить дела</string>
+    <string name="settings_button">Настройки</string>
+    <string name="guide_button">Инструкция</string>
+    <string name="profile_bg">Фон профиля</string>
+    <string name="settings_bg">Фон настроек</string>
+    <string name="guide_bg">Фон инструкции</string>
+
+</resources>

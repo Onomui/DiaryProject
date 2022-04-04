@@ -6,11 +6,11 @@
         <item>Друзья</item>
     </string-array>
     <string name="profile_button">Профиль</string>
-    <string name="float_button">Добавить дела</string>
     <string name="settings_button">Настройки</string>
     <string name="guide_button">Инструкция</string>
     <string name="profile_bg">Фон профиля</string>
     <string name="settings_bg">Фон настроек</string>
     <string name="guide_bg">Фон инструкции</string>
+    <string name="ActiveDate"> </string>
 
 </resources>

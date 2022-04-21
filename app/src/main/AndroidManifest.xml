@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.TimeProject">
         <activity
+            android:name=".AddingScheduleActivity"
+            android:exported="false"
+            android:parentActivityName=".CalendarDayActivity" />
+        <activity
             android:name=".CalendarDayActivity"
             android:exported="false"
             android:parentActivityName=".MainActivity" />

@@ -5,12 +5,18 @@
         <item>Семья</item>
         <item>Друзья</item>
     </string-array>
+    <string name="time_start_text">Время начала</string>
+    <string name="time_end_text">Время окончания</string>
+    <string name="time_description_text">Описание</string>
     <string name="profile_button">Профиль</string>
     <string name="settings_button">Настройки</string>
     <string name="guide_button">Инструкция</string>
     <string name="profile_bg">Фон профиля</string>
     <string name="settings_bg">Фон настроек</string>
     <string name="guide_bg">Фон инструкции</string>
-    <string name="ActiveDate"> </string>
+    <string name="add_button">Добавить занятость</string>
 
+    <string name="radioEveryDay">Каждый день</string>
+    <string name="radioWorkDays">В будние</string>
+    <string name="radioThisDay">В эту дату</string>
 </resources>

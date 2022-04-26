@@ -19,4 +19,9 @@
     <string name="radioEveryDay">Каждый день</string>
     <string name="radioWorkDays">В будние</string>
     <string name="radioThisDay">В эту дату</string>
+
+    <string name="login_text">Логин</string>
+    <string name="password_text">Пароль</string>
+    <string name="login_btn_text">Вход</string>
+
 </resources>

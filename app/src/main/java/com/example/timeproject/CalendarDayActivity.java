@@ -40,7 +40,8 @@ public class CalendarDayActivity extends AppCompatActivity {
 
         userActivities.add(incomingNewActivity);
         if (userActivities.get(0) != null) {
-            LinearLayout.LayoutParams llParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            LinearLayout.LayoutParams llParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT);
             for (String[] dayArray:userActivities) {
                 TextView nameTxtView = new TextView(this);
                 nameTxtView.setText(username);

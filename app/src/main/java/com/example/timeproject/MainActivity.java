@@ -14,12 +14,15 @@ import java.util.Arrays;
 public class MainActivity extends AppCompatActivity {
 
     private CalendarView calendarView;
+    private DatabaseHelper DBHelper;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        DBHelper = new DatabaseHelper(this);
 
         calendarView = (CalendarView) findViewById(R.id.calendarView);
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {

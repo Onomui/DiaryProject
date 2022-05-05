@@ -20,8 +20,16 @@
     <string name="radioWorkDays">В будние</string>
     <string name="radioThisDay">В эту дату</string>
 
-    <string name="login_text">Логин</string>
+    <string name="email_text">Email</string>
+    <string name="name_text">Имя</string>
     <string name="password_text">Пароль</string>
-    <string name="login_btn_text">Вход</string>
+    <string name="confirm_password_text">Подтвердить пароль</string>
+    <string name="login_btn_text">Войти</string>
+    <string name="register_btn_text">Зарегистрироваться</string>
+
+    <string name="password_not_equals_confirmed">Пароли не совпадают</string>
+    <string name="email_invalid">Некорректная почта</string>
+    <string name="email_exists">Аккаунт с данной почтой уже существует</string>
+
 
 </resources>

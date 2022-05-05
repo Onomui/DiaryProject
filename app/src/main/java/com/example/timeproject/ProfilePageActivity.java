@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class ProfilePageActivity extends AppCompatActivity {
 
     public String userLogin;
@@ -16,17 +18,24 @@ public class ProfilePageActivity extends AppCompatActivity {
     EditText inputUserLogin;
     EditText inputUserPassword;
     Button btnLogin;
+    DatabaseHelper DBHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_page);
-        inputUserLogin = (EditText) findViewById(R.id.editTextLogin);
-        inputUserPassword = (EditText) findViewById(R.id.editTextPassword);
-        btnLogin = (Button) findViewById(R.id.buttonLogin);
+        DBHelper = new DatabaseHelper(this);
+
+        ArrayList<String> userData = DBHelper.select_user(1);
+
+        if (userData.get(1).equals("")){
+            openLogin();
+        }
+
     }
-    public void Login(View view) {
-        userLogin=inputUserLogin.getText().toString();
-        userPassword=inputUserPassword.getText().toString();
+
+    public void openLogin(){
+        Intent intent = new Intent(this, LoginPageActivity.class);
+        startActivity(intent);
     }
 }

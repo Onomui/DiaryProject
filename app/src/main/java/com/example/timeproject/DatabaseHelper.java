@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class DatabaseHelper {
 
     private static final String DATABASE_NAME = "userInformation.sqlite";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     private static final String TABLE_USER_INFO = "userInfo";
 
@@ -30,7 +30,7 @@ public class DatabaseHelper {
 
     private static final String EVENTS_COLUMN_ID = "id";
     private static final String EVENTS_COLUMN_NAME = "name";
-    private static final String EVENTS_COLUMN_REPEAT = "name";
+    private static final String EVENTS_COLUMN_REPEAT = "repeat";
     private static final String EVENTS_COLUMN_EVENT_START = "event_start";
     private static final String EVENTS_COLUMN_EVENT_END = "event_end";
     private static final String EVENTS_COLUMN_DESCRIPTION = "description";
@@ -50,7 +50,7 @@ public class DatabaseHelper {
     }
 
     public long insert_event(String name, String repeat, String event_start, String event_end, String description) {
-        ContentValues cv=new ContentValues();
+        ContentValues cv = new ContentValues();
         cv.put(EVENTS_COLUMN_NAME, name);
         cv.put(EVENTS_COLUMN_REPEAT, repeat);
         cv.put(EVENTS_COLUMN_EVENT_START, event_start);
@@ -60,37 +60,37 @@ public class DatabaseHelper {
     }
 
     public int update_user(int id, String email, String name, String password) {
-        ContentValues cv=new ContentValues();
+        ContentValues cv = new ContentValues();
         cv.put(USER_INFO_COLUMN_EMAIL, email);
         cv.put(USER_INFO_COLUMN_NAME, name);
         cv.put(USER_INFO_COLUMN_PASSWORD, password);
-        return mDataBase.update(TABLE_USER_INFO, cv, USER_INFO_COLUMN_ID + " = ?", new String[] {String.valueOf(id)});
+        return mDataBase.update(TABLE_USER_INFO, cv, USER_INFO_COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
     }
 
     public int update_event(int id, String name, String repeat, String event_start, String event_end, String description) {
-        ContentValues cv=new ContentValues();
+        ContentValues cv = new ContentValues();
         cv.put(EVENTS_COLUMN_NAME, name);
         cv.put(EVENTS_COLUMN_REPEAT, repeat);
         cv.put(EVENTS_COLUMN_EVENT_START, event_start);
         cv.put(EVENTS_COLUMN_EVENT_END, event_end);
         cv.put(EVENTS_COLUMN_DESCRIPTION, description);
-        return mDataBase.update(TABLE_EVENTS, cv, EVENTS_COLUMN_ID + " = ?", new String[] {String.valueOf(id)});
+        return mDataBase.update(TABLE_EVENTS, cv, EVENTS_COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
     }
 
     public void delete_user(int id) {
-        ContentValues cv=new ContentValues();
+        ContentValues cv = new ContentValues();
         cv.put(USER_INFO_COLUMN_EMAIL, "");
         cv.put(USER_INFO_COLUMN_NAME, "");
         cv.put(USER_INFO_COLUMN_PASSWORD, "");
 
-        mDataBase.update(TABLE_USER_INFO, cv, USER_INFO_COLUMN_ID + " = ?", new String[] {String.valueOf(id)});
+        mDataBase.update(TABLE_USER_INFO, cv, USER_INFO_COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
     }
 
     public void delete_event(int id) {
-        mDataBase.delete(TABLE_EVENTS, EVENTS_COLUMN_ID + " = ?", new String[] {String.valueOf(id)});
+        mDataBase.delete(TABLE_EVENTS, EVENTS_COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
     }
 
-    public ArrayList<String> select_user(long id) {
+    public ArrayList<String> select_user(int id) {
         ArrayList<String> arrs = new ArrayList<String>();
         arrs.add(String.valueOf(id));
 
@@ -108,7 +108,7 @@ public class DatabaseHelper {
         return arrs;
     }
 
-    public ArrayList<String> select_event(long id) {
+    public ArrayList<String> select_event(int id) {
         ArrayList<String> arrs = new ArrayList<String>();
         arrs.add(String.valueOf(id));
 
@@ -137,7 +137,8 @@ public class DatabaseHelper {
         mCursor.moveToFirst();
         if (!mCursor.isAfterLast()) {
             do {
-                ArrayList<String> tmp = new ArrayList<String>() {};
+                ArrayList<String> tmp = new ArrayList<String>() {
+                };
 
                 long id = mCursor.getLong(EVENTS_NUM_COLUMN_ID);
                 String name = mCursor.getString(EVENTS_NUM_COLUMN_NAME);
@@ -164,11 +165,12 @@ public class DatabaseHelper {
         OpenHelper(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
         }
+
         @Override
         public void onCreate(SQLiteDatabase db) {
             String query_user = "CREATE TABLE " + TABLE_USER_INFO + " (" +
                     USER_INFO_COLUMN_ID + " INTEGER PRIMARY KEY, " +
-                    USER_INFO_COLUMN_EMAIL+ " STRING, " +
+                    USER_INFO_COLUMN_EMAIL + " STRING, " +
                     USER_INFO_COLUMN_NAME + " STRING, " +
                     USER_INFO_COLUMN_PASSWORD + " STRING);";
             db.execSQL(query_user);

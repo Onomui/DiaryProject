@@ -18,7 +18,7 @@ public class CalendarDayActivity extends AppCompatActivity {
     private TextView dateTextView;
     private String date;
     private LinearLayout thisLL;
-    private String username = "PlaceholderNickName";
+    private String username = "Name";
 
 
     @Override

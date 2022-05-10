@@ -7,11 +7,22 @@
     tools:context=".AddingScheduleActivity">
 
     <EditText
+        android:id="@+id/editTextName"
+        android:layout_width="260dp"
+        android:layout_height="75dp"
+        android:layout_marginEnd="131dp"
+        android:layout_marginBottom="400dp"
+        android:ems="10"
+        android:hint="@string/nameOfTheEvent_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
         android:id="@+id/editTextTimeStart"
         android:layout_width="235dp"
         android:layout_height="75dp"
         android:layout_marginEnd="156dp"
-        android:layout_marginBottom="420dp"
+        android:layout_marginBottom="300dp"
         android:ems="10"
         android:hint="@string/time_start_text"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,7 +33,7 @@
         android:layout_width="242dp"
         android:layout_height="65dp"
         android:layout_marginEnd="148dp"
-        android:layout_marginBottom="324dp"
+        android:layout_marginBottom="204dp"
         android:ems="10"
         android:hint="@string/time_end_text"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -33,7 +44,7 @@
         android:layout_width="360dp"
         android:layout_height="148dp"
         android:layout_marginStart="18dp"
-        android:layout_marginBottom="130dp"
+        android:layout_marginBottom="40dp"
         android:ems="10"
         android:hint="@string/time_description_text"
         app:layout_constraintBottom_toBottomOf="parent"

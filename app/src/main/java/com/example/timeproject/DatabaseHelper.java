@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -112,6 +111,7 @@ public class DatabaseHelper {
 
     public ArrayList<String> select_event(int id) {
         ArrayList<String> arrs = new ArrayList<String>();
+        
 
         Cursor mCursor = mDataBase.query(TABLE_EVENTS, null, EVENTS_COLUMN_ID + " = ?", new String[]{String.valueOf(id)}, null, null, null);
         if (mCursor.moveToFirst()) {
@@ -134,20 +134,10 @@ public class DatabaseHelper {
     }
 
     public ArrayList<ArrayList<String>> selectAll_events() {
-        ArrayList<ArrayList<String>> arrs = new ArrayList<ArrayList<String>>();
-        try {
-            Cursor mCursor = mDataBase.query(TABLE_EVENTS, null, null, null, null, null, null);
-        }
-        catch (Exception e){
-            Log.d("My Tag", e.getMessage());
-            return arrs;
-        }
-
         Cursor mCursor = mDataBase.query(TABLE_EVENTS, null, null, null, null, null, null);
 
-        if (!mCursor.moveToFirst()){
-            return arrs;
-        }
+        ArrayList<ArrayList<String>> arrs = new ArrayList<ArrayList<String>>();
+        mCursor.moveToFirst();
         if (!mCursor.isAfterLast()) {
             do {
                 ArrayList<String> tmp = new ArrayList<String>() {

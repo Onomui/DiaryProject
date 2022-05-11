@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -92,25 +93,25 @@ public class DatabaseHelper {
 
     public ArrayList<String> select_user(int id) {
         ArrayList<String> arrs = new ArrayList<String>();
-        arrs.add(String.valueOf(id));
 
         Cursor mCursor = mDataBase.query(TABLE_USER_INFO, null, USER_INFO_COLUMN_ID + " = ?", new String[]{String.valueOf(id)}, null, null, null);
-        mCursor.moveToFirst();
+        if (mCursor.moveToFirst()) {
 
-        String email = mCursor.getString(USER_INFO_NUM_COLUMN_EMAIL);
-        String name = mCursor.getString(USER_INFO_NUM_COLUMN_NAME);
-        String password = mCursor.getString(USER_INFO_NUM_COLUMN_PASSWORD);
+            String email = mCursor.getString(USER_INFO_NUM_COLUMN_EMAIL);
+            String name = mCursor.getString(USER_INFO_NUM_COLUMN_NAME);
+            String password = mCursor.getString(USER_INFO_NUM_COLUMN_PASSWORD);
 
-        arrs.add(email);
-        arrs.add(name);
-        arrs.add(password);
+            arrs.add(String.valueOf(id));
+            arrs.add(email);
+            arrs.add(name);
+            arrs.add(password);
+        }
 
         return arrs;
     }
 
     public ArrayList<String> select_event(int id) {
         ArrayList<String> arrs = new ArrayList<String>();
-        
 
         Cursor mCursor = mDataBase.query(TABLE_EVENTS, null, EVENTS_COLUMN_ID + " = ?", new String[]{String.valueOf(id)}, null, null, null);
         if (mCursor.moveToFirst()) {
@@ -133,10 +134,20 @@ public class DatabaseHelper {
     }
 
     public ArrayList<ArrayList<String>> selectAll_events() {
+        ArrayList<ArrayList<String>> arrs = new ArrayList<ArrayList<String>>();
+        try {
+            Cursor mCursor = mDataBase.query(TABLE_EVENTS, null, null, null, null, null, null);
+        }
+        catch (Exception e){
+            Log.d("My Tag", e.getMessage());
+            return arrs;
+        }
+
         Cursor mCursor = mDataBase.query(TABLE_EVENTS, null, null, null, null, null, null);
 
-        ArrayList<ArrayList<String>> arrs = new ArrayList<ArrayList<String>>();
-        mCursor.moveToFirst();
+        if (!mCursor.moveToFirst()){
+            return arrs;
+        }
         if (!mCursor.isAfterLast()) {
             do {
                 ArrayList<String> tmp = new ArrayList<String>() {

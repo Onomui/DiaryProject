@@ -30,6 +30,14 @@
             android:exported="false"
             android:parentActivityName=".MainActivity" />
         <activity
+            android:name=".LoginPageActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".RegisterPageActivity"
+            android:exported="false"
+            android:parentActivityName=".LoginPageActivity" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

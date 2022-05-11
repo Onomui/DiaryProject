@@ -28,7 +28,7 @@ public class ProfilePageActivity extends AppCompatActivity {
 
         ArrayList<String> userData = DBHelper.select_user(1);
 
-        if (userData.get(1).equals("")){
+        if (userData.isEmpty()){
             openLogin();
         }
 

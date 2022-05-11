@@ -13,7 +13,7 @@ public class AddingScheduleActivity extends AppCompatActivity {
     EditText inputStartTime, inputEndTime;
     EditText editTextName;
     EditText inputDescription;
-    RadioGroup radioGroupOccurre;
+    RadioGroup radioGroupOccurred;
     String date;
     DatabaseHelper DBHelper;
 
@@ -31,7 +31,8 @@ public class AddingScheduleActivity extends AppCompatActivity {
         inputStartTime = (EditText) findViewById(R.id.editTextTimeStart);
         inputEndTime = (EditText) findViewById(R.id.editTextTimeEnd);
         inputDescription = (EditText) findViewById(R.id.editTextDescription);
-        radioGroupOccurre = (RadioGroup) findViewById(R.id.radioGroupOccure);
+        radioGroupOccurred = (RadioGroup) findViewById(R.id.radioGroupOccure);
+        DBHelper = new DatabaseHelper(this);
 
     }
 
@@ -42,7 +43,7 @@ public class AddingScheduleActivity extends AppCompatActivity {
         String eventEnd;
         String description;
 
-        switch (radioGroupOccurre.getCheckedRadioButtonId()) {
+        switch (radioGroupOccurred.getCheckedRadioButtonId()) {
             case R.id.radioButtonEveryDay:
                 repeat = "Everyday";
                 break;
@@ -60,7 +61,7 @@ public class AddingScheduleActivity extends AppCompatActivity {
 
         eventName = editTextName.getText().toString();
 
-        DBHelper.insert_event(eventName, repeat, eventStart, eventEnd, description);
+        DBHelper.insert_event(date, eventName, repeat, eventStart, eventEnd, description);
 
         Intent intent = new Intent(this, CalendarDayActivity.class);
         startActivity(intent);

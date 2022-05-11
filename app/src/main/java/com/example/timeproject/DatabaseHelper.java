@@ -136,7 +136,7 @@ public class DatabaseHelper {
     }
 
     // Получение данных о всех событиях (метод SELECT (SELECT ALL))
-    public ArrayList<ArrayList<String>> selectAll_events() {
+    public ArrayList<ArrayList<String>> selectAllEvents() {
         ArrayList<ArrayList<String>> arrs = new ArrayList<ArrayList<String>>();
         try {
             Cursor mCursor = mDataBase.query(TABLE_EVENTS, null, null, null, null, null, null);
@@ -173,6 +173,8 @@ public class DatabaseHelper {
         }
         return arrs;
     }
+
+    public void deleteAllEvents() {}
 
     // Класс подключения к базе данных
     // Пересоздаёт таблицы при увеличение константы DATABASE_VERSION

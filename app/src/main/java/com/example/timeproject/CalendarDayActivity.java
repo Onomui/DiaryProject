@@ -37,7 +37,7 @@ public class CalendarDayActivity extends AppCompatActivity {
         Intent incomingIntent = getIntent();
         String[] incomingNewActivity = incomingIntent.getStringArrayExtra("thisDateActivity");
 
-        ArrayList<ArrayList<String>> userEvents = DBHelper.selectAll_events();
+        ArrayList<ArrayList<String>> userEvents = DBHelper.selectAllEvents();
         if (!userEvents.isEmpty()) {
             LinearLayout.LayoutParams llParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);

@@ -28,27 +28,22 @@ public class CalendarDayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar_day);
         dateTextView = (TextView) findViewById(R.id.date);
-
+        DBHelper = new DatabaseHelper(this);
         Intent incomingDateIntent = getIntent();
         String date = incomingDateIntent.getStringExtra("dateNumber");
         this.date=date;
         dateTextView.setText(date);
         thisLL = (LinearLayout) findViewById(R.id.thisLinearLaysout);
-
         Intent incomingIntent = getIntent();
         String[] incomingNewActivity = incomingIntent.getStringArrayExtra("thisDateActivity");
 
-        userActivities.add(incomingNewActivity);
-        if (userActivities.get(0) != null) {
+        ArrayList<ArrayList<String>> userEvents = DBHelper.selectAll_events();
+        if (!userEvents.isEmpty()) {
             LinearLayout.LayoutParams llParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
-            for (String[] dayArray:userActivities) {
-                TextView nameTxtView = new TextView(this);
-                nameTxtView.setText(username);
-                thisLL.addView(nameTxtView,llParams);
+            for (ArrayList<String> dayArray:userEvents) {
                 for (String text:dayArray) {
                     TextView txtView = new TextView(this);
-                    System.out.println(text);
                     txtView.setText(text);
                     thisLL.addView(txtView,llParams);
                 }

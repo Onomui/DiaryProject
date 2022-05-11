@@ -10,11 +10,12 @@ import android.widget.RadioGroup;
 
 public class AddingScheduleActivity extends AppCompatActivity {
 
-    EditText inputStartTime;
-    EditText inputEndTime;
+    EditText inputStartTime, inputEndTime;
+    EditText editTextName;
     EditText inputDescription;
     RadioGroup radioGroupOccurre;
     String date;
+    DatabaseHelper DBHelper;
 
 
     @Override
@@ -26,6 +27,7 @@ public class AddingScheduleActivity extends AppCompatActivity {
         String thisDate = incomingDateIntent.getStringExtra("thisDate");
         date=thisDate;
 
+        editTextName = findViewById(R.id.editTextName);
         inputStartTime = (EditText) findViewById(R.id.editTextTimeStart);
         inputEndTime = (EditText) findViewById(R.id.editTextTimeEnd);
         inputDescription = (EditText) findViewById(R.id.editTextDescription);
@@ -34,27 +36,33 @@ public class AddingScheduleActivity extends AppCompatActivity {
     }
 
     public void AddToSchedule(View view) {
-
-        String[] dayActivity = new String[4];
+        String eventName;
+        String repeat;
+        String eventStart;
+        String eventEnd;
+        String description;
 
         switch (radioGroupOccurre.getCheckedRadioButtonId()) {
             case R.id.radioButtonEveryDay:
-                dayActivity[0] = "Everyday";
+                repeat = "Everyday";
                 break;
             case R.id.radioButtonWorkDays:
-                dayActivity[0] = "Workdays";
+                repeat = "Workdays";
                 break;
-            case R.id.radioButtonThisDay:
-                dayActivity[0]= date;
+            default:
+                repeat = date;
                 break;
         }
 
-        dayActivity[1] = inputStartTime.getText().toString();
-        dayActivity[2] = inputEndTime.getText().toString();
-        dayActivity[3] = inputDescription.getText().toString();
+        eventStart = inputStartTime.getText().toString();
+        eventEnd = inputEndTime.getText().toString();
+        description = inputDescription.getText().toString();
+
+        eventName = editTextName.getText().toString();
+
+        DBHelper.insert_event(eventName, repeat, eventStart, eventEnd, description);
 
         Intent intent = new Intent(this, CalendarDayActivity.class);
-        intent.putExtra("thisDateActivity",dayActivity);
         startActivity(intent);
     }
 }

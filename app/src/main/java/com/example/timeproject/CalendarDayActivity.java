@@ -20,6 +20,8 @@ public class CalendarDayActivity extends AppCompatActivity {
     private LinearLayout thisLL;
     private String username = "Name";
 
+    DatabaseHelper DBHelper;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +34,6 @@ public class CalendarDayActivity extends AppCompatActivity {
         this.date=date;
         dateTextView.setText(date);
         thisLL = (LinearLayout) findViewById(R.id.thisLinearLaysout);
-
-
 
         Intent incomingIntent = getIntent();
         String[] incomingNewActivity = incomingIntent.getStringArrayExtra("thisDateActivity");

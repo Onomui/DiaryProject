@@ -13,6 +13,8 @@ public class RegisterPageActivity extends AppCompatActivity {
 
     Button registerButton;
 
+    ServerConnection serverConnection;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

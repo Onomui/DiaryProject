@@ -110,23 +110,25 @@ public class DatabaseHelper {
 
     public ArrayList<String> select_event(int id) {
         ArrayList<String> arrs = new ArrayList<String>();
-        arrs.add(String.valueOf(id));
+        
 
         Cursor mCursor = mDataBase.query(TABLE_EVENTS, null, EVENTS_COLUMN_ID + " = ?", new String[]{String.valueOf(id)}, null, null, null);
-        mCursor.moveToFirst();
+        if (mCursor.moveToFirst()) {
 
-        String name = mCursor.getString(EVENTS_NUM_COLUMN_NAME);
-        String repeat = mCursor.getString(EVENTS_NUM_COLUMN_REPEAT);
-        String event_start = mCursor.getString(EVENTS_NUM_COLUMN_EVENT_START);
-        String event_end = mCursor.getString(EVENTS_NUM_COLUMN_EVENT_END);
-        String description = mCursor.getString(EVENTS_NUM_COLUMN_DESCRIPTION);
+            String name = mCursor.getString(EVENTS_NUM_COLUMN_NAME);
+            String repeat = mCursor.getString(EVENTS_NUM_COLUMN_REPEAT);
+            String event_start = mCursor.getString(EVENTS_NUM_COLUMN_EVENT_START);
+            String event_end = mCursor.getString(EVENTS_NUM_COLUMN_EVENT_END);
+            String description = mCursor.getString(EVENTS_NUM_COLUMN_DESCRIPTION);
 
-        arrs.add(name);
-        arrs.add(repeat);
-        arrs.add(event_start);
-        arrs.add(event_end);
-        arrs.add(description);
-
+            arrs.add(String.valueOf(id));
+            arrs.add(name);
+            arrs.add(repeat);
+            arrs.add(event_start);
+            arrs.add(event_end);
+            arrs.add(description);
+        }
+        
         return arrs;
     }
 

@@ -26,7 +26,7 @@ public class ProfilePageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile_page);
         DBHelper = new DatabaseHelper(this);
 
-        ArrayList<String> userData = DBHelper.select_user(0);
+        ArrayList<String> userData = DBHelper.select_user(1);
 
         if (userData.get(1).equals("")){
             openLogin();

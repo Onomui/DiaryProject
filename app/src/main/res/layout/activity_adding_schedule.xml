@@ -10,45 +10,47 @@
         android:id="@+id/editTextName"
         android:layout_width="260dp"
         android:layout_height="75dp"
-        android:layout_marginEnd="131dp"
-        android:layout_marginBottom="400dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
         android:ems="10"
         android:hint="@string/nameOfTheEvent_text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextTimeStart"
         android:layout_width="235dp"
         android:layout_height="75dp"
-        android:layout_marginEnd="156dp"
-        android:layout_marginBottom="300dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
         android:ems="10"
         android:hint="@string/time_start_text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:inputType="time"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextName" />
 
     <EditText
         android:id="@+id/editTextTimeEnd"
         android:layout_width="242dp"
         android:layout_height="65dp"
-        android:layout_marginEnd="148dp"
-        android:layout_marginBottom="204dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
         android:ems="10"
         android:hint="@string/time_end_text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:inputType="time"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTimeStart" />
 
     <EditText
         android:id="@+id/editTextDescription"
         android:layout_width="360dp"
         android:layout_height="148dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginBottom="40dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
         android:ems="10"
         android:hint="@string/time_description_text"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTimeEnd" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton2"
@@ -64,19 +66,20 @@
         app:srcCompat="@android:drawable/ic_media_play" />
 
     <RadioGroup
+        android:id="@+id/radioGroupOccure"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:orientation="horizontal"
-        android:id="@+id/radioGroupOccure"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="10dp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <RadioButton
             android:id="@+id/radioButtonEveryDay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+
             android:text="@string/radioEveryDay"
             tools:layout_editor_absoluteX="143dp"
             tools:layout_editor_absoluteY="28dp" />
@@ -85,17 +88,27 @@
             android:id="@+id/radioButtonWorkDays"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
             android:text="@string/radioWorkDays"
             tools:layout_editor_absoluteX="143dp"
             tools:layout_editor_absoluteY="28dp" />
-
         <RadioButton
-            android:id="@+id/radioButtonThisDay"
+            android:id="@+id/radioButtonWeekends"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/radioThisDay"
+            android:layout_marginTop="15dp"
+            android:text="В выходные"
             tools:layout_editor_absoluteX="143dp"
             tools:layout_editor_absoluteY="28dp" />
+        <RadioButton
+            android:id="@+id/radioButtonAfterWeek"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="Каждую неделю"
+            tools:layout_editor_absoluteX="143dp"
+            tools:layout_editor_absoluteY="28dp" />
+
 
     </RadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>

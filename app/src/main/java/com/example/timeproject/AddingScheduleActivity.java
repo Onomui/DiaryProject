@@ -45,13 +45,17 @@ public class AddingScheduleActivity extends AppCompatActivity {
 
         switch (radioGroupOccurred.getCheckedRadioButtonId()) {
             case R.id.radioButtonEveryDay:
-                repeat = "Everyday";
+                repeat = "Каждый день";
                 break;
             case R.id.radioButtonWorkDays:
-                repeat = "Workdays";
+                repeat = "Будние дни";
                 break;
+            case R.id.radioButtonWeekends:
+                repeat = "Выходные";
+            case R.id.radioButtonAfterWeek:
+                repeat= "Каждую неделю";
             default:
-                repeat = date;
+                repeat="";
                 break;
         }
 

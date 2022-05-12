@@ -14,7 +14,7 @@
         <activity
             android:name=".AddingScheduleActivity"
             android:exported="false"
-            android:parentActivityName=".CalendarDayActivity" />
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".CalendarDayActivity"
             android:exported="false"

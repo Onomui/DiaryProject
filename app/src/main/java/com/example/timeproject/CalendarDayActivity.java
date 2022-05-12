@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class CalendarDayActivity extends AppCompatActivity {
 
@@ -42,10 +43,15 @@ public class CalendarDayActivity extends AppCompatActivity {
             LinearLayout.LayoutParams llParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT);
             for (ArrayList<String> dayArray:userEvents) {
+                if (!Objects.equals(dayArray.get(0),date)) {
+                    continue;
+                }
                 for (String text:dayArray) {
                     TextView txtView = new TextView(this);
                     txtView.setText(text);
+                    txtView.setTextAppearance(this, R.style.coolLookingText);
                     thisLL.addView(txtView,llParams);
+                    System.out.println(text);
                 }
             }
 

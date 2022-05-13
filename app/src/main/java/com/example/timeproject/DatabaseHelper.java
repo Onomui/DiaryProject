@@ -30,17 +30,18 @@ public class DatabaseHelper {
 
     private static final String EVENTS_COLUMN_DATE = "date"; // Дата события ("11.05.2022")
     private static final String EVENTS_COLUMN_NAME = "name"; // Название события ("Английский")
-    private static final String EVENTS_COLUMN_REPEAT = "repeat"; // Повтор события ("Каждый день")
     private static final String EVENTS_COLUMN_EVENT_START = "event_start"; // Время начала ("16:40")
     private static final String EVENTS_COLUMN_EVENT_END = "event_end"; // Время конца ("18:10")
     private static final String EVENTS_COLUMN_DESCRIPTION = "description"; // Описание ивента ("...")
+    private static final String EVENTS_COLUMN_REPEAT = "repeat"; // Повтор события ("Каждый день")
 
     private static final int EVENTS_NUM_COLUMN_DATE = 0;
     private static final int EVENTS_NUM_COLUMN_NAME = 1;
-    private static final int EVENTS_NUM_COLUMN_REPEAT = 2;
-    private static final int EVENTS_NUM_COLUMN_EVENT_START = 3;
-    private static final int EVENTS_NUM_COLUMN_EVENT_END = 4;
-    private static final int EVENTS_NUM_COLUMN_DESCRIPTION = 5;
+    private static final int EVENTS_NUM_COLUMN_EVENT_START = 2;
+    private static final int EVENTS_NUM_COLUMN_EVENT_END = 3;
+    private static final int EVENTS_NUM_COLUMN_DESCRIPTION = 4;
+    private static final int EVENTS_NUM_COLUMN_REPEAT = 5;
+
 
     private final SQLiteDatabase mDataBase;
 
@@ -50,14 +51,15 @@ public class DatabaseHelper {
     }
 
     // Внесение нового события (метод INSERT)
-    public long insert_event(String date, String name, String repeat, String event_start, String event_end, String description) {
+    public long insert_event(String date, String name, String repeat, String event_start,
+                             String event_end, String description) {
         ContentValues cv = new ContentValues();
         cv.put(EVENTS_COLUMN_DATE, date);
         cv.put(EVENTS_COLUMN_NAME, name);
-        cv.put(EVENTS_COLUMN_REPEAT, repeat);
         cv.put(EVENTS_COLUMN_EVENT_START, event_start);
         cv.put(EVENTS_COLUMN_EVENT_END, event_end);
         cv.put(EVENTS_COLUMN_DESCRIPTION, description);
+        cv.put(EVENTS_COLUMN_REPEAT, repeat);
         return mDataBase.insert(TABLE_EVENTS, null, cv);
     }
 
@@ -67,7 +69,8 @@ public class DatabaseHelper {
         cv.put(USER_INFO_COLUMN_EMAIL, email);
         cv.put(USER_INFO_COLUMN_NAME, name);
         cv.put(USER_INFO_COLUMN_PASSWORD, password);
-        return mDataBase.update(TABLE_USER_INFO, cv, USER_INFO_COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
+        return mDataBase.update(TABLE_USER_INFO, cv, USER_INFO_COLUMN_ID + " = ?",
+                new String[]{String.valueOf(id)});
     }
 
     // Удаление данных о пользователе (метод UPDATE)
@@ -77,14 +80,15 @@ public class DatabaseHelper {
         cv.put(USER_INFO_COLUMN_NAME, "");
         cv.put(USER_INFO_COLUMN_PASSWORD, "");
 
-        mDataBase.update(TABLE_USER_INFO, cv, USER_INFO_COLUMN_ID + " = ?", new String[]{String.valueOf(id)});
+        mDataBase.update(TABLE_USER_INFO, cv, USER_INFO_COLUMN_ID + " = ?",
+                new String[]{String.valueOf(id)});
     }
 
     // Удаление события (метод DELETE)
-    public void delete_event(String date, String name) {
+    public void delete_event(String date) {
         mDataBase.delete(TABLE_EVENTS,
-                EVENTS_COLUMN_DATE + " = ?," + EVENTS_COLUMN_NAME + " = ?",
-                new String[]{date, name});
+                EVENTS_COLUMN_DATE + " = ?",
+                new String[]{date});
     }
 
     // Получение данных пользователя (метод SELECT)

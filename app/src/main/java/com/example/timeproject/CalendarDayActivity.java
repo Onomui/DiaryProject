@@ -47,12 +47,21 @@ public class CalendarDayActivity extends AppCompatActivity {
                     continue;
                 }
                 for (String text:dayArray) {
+                    if (Objects.equals(text,"")) {
+                        continue;
+                    }
+                    if (Objects.equals(text,date)) {
+                        continue;
+                    }
                     TextView txtView = new TextView(this);
                     txtView.setText(text);
                     txtView.setTextAppearance(this, R.style.coolLookingText);
                     thisLL.addView(txtView,llParams);
-                    System.out.println(text);
                 }
+                TextView txtView = new TextView(this);
+                txtView.setText("———————————————————————————");
+                txtView.setTextAppearance(this, R.style.coolLookingText);
+                thisLL.addView(txtView,llParams);
             }
 
             }
@@ -63,6 +72,11 @@ public class CalendarDayActivity extends AppCompatActivity {
     public void createSchedule(View view) {
         Intent intent = new Intent(this, AddingScheduleActivity.class);
         intent.putExtra("thisDate",date);
+        startActivity(intent);
+    }
+    public void deleteSchedule(View view) {
+        DBHelper.delete_event(date);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }

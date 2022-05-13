@@ -32,7 +32,7 @@
         android:layout_marginBottom="470dp"
         android:ems="10"
         android:hint="Введите ваш часовой пояс"
-        android:inputType="textPersonName"
+        android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,6 +45,7 @@
         android:layout_marginEnd="60dp"
         android:layout_marginBottom="60dp"
         android:text="Сохранить"
+        android:onClick="stngsBtn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

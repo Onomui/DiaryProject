@@ -13,7 +13,6 @@ public class AddingScheduleActivity extends AppCompatActivity {
     EditText inputStartTime, inputEndTime;
     EditText editTextName;
     EditText inputDescription;
-    RadioGroup radioGroupOccurred;
     String date;
     DatabaseHelper DBHelper;
 
@@ -31,7 +30,6 @@ public class AddingScheduleActivity extends AppCompatActivity {
         inputStartTime = (EditText) findViewById(R.id.editTextTimeStart);
         inputEndTime = (EditText) findViewById(R.id.editTextTimeEnd);
         inputDescription = (EditText) findViewById(R.id.editTextDescription);
-        radioGroupOccurred = (RadioGroup) findViewById(R.id.radioGroupOccure);
         DBHelper = new DatabaseHelper(this);
 
     }
@@ -42,22 +40,7 @@ public class AddingScheduleActivity extends AppCompatActivity {
         String eventStart;
         String eventEnd;
         String description;
-
-        switch (radioGroupOccurred.getCheckedRadioButtonId()) {
-            case R.id.radioButtonEveryDay:
-                repeat = "Каждый день";
-                break;
-            case R.id.radioButtonWorkDays:
-                repeat = "Будние дни";
-                break;
-            case R.id.radioButtonWeekends:
-                repeat = "Выходные";
-            case R.id.radioButtonAfterWeek:
-                repeat= "Каждую неделю";
-            default:
-                repeat="";
-                break;
-        }
+        repeat="";
 
         eventStart = inputStartTime.getText().toString();
         eventEnd = inputEndTime.getText().toString();
@@ -65,9 +48,9 @@ public class AddingScheduleActivity extends AppCompatActivity {
 
         eventName = editTextName.getText().toString();
 
-        DBHelper.insert_event(date, eventName, repeat, eventStart, eventEnd, description);
+        DBHelper.insert_event(date, eventName, eventStart, eventEnd, description,repeat);
 
-        Intent intent = new Intent(this, CalendarDayActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }
